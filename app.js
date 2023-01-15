@@ -100,9 +100,14 @@ filterBtns.forEach(function(btn){
       if(menuItem.category === category){
         return menuItem
       }
-    })
-  })
-})
+    });
+    if(category ==='all'){
+      displayMenuItems(menu)
+    } else  {
+      displayMenuItems(menuCategory)
+    }
+  });
+});
 
 
 
