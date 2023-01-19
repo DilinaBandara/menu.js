@@ -81,52 +81,26 @@ const menu = [
   },
 ];
 
-
-// Select items
-const sectionCenter = document.querySelector('.section-center');
-const filterBtns = document.querySelectorAll('.filter-btn')
-
-// Load items
-window.addEventListener('DOMContentLoaded', function(){
-  displayMenuItems(menu)
-})
+const section = document.querySelector('.section-center')
+console.log(section)
+const image = document.querySelector('.photo')
+const heading = document.querySelector('.heading')
+const desc = document.querySelector('.item-text')
 
 
-// Filter Items
-filterBtns.forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    const category = e.currentTarget.dataset.id
-    const menuCategory = menu.filter(function(menuItem){
-      if(menuItem.category === category){
-        return menuItem
-      }
-    });
-    if(category ==='all'){
-      displayMenuItems(menu)
-    } else  {
-      displayMenuItems(menuCategory)
-    }
-  });
-});
-
-
-
-
-function displayMenuItems(menuItems){
-  let displayMenu = menuItems.map(function(item){
-    return `<article class="menu-item">
-    <img src=${item.img} alt=${item.title} class="photo" />
-    <div class="item-info">
-      <header>
-        <h4>${item.title}</h4>
-        <h4 class="price">$${item.price}</h4>
-      </header>
-      <p class="item-text">
-        ${item.desc}
-      </p>
-    </div>
-  </article>`
-  })
-  displayMenu= displayMenu.join("")
-  sectionCenter.innerHTML = displayMenu
+for(let i=0; i<menu.length; i++){
+  let template = `        <article class="menu-item">
+<img src="${menu[i].img}" alt="menu item" class="photo" />
+<div class="item-info">
+  <header>
+    <h4 class="heading">${menu[i].title}</h4>
+    <h4 class="price">$${menu[i].price}</h4>
+  </header>
+  <p class="item-text">
+  ${menu[i].desc}
+  </p>
+</div>
+</article>`
+section.innerHTML +=template
 }
+
